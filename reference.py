@@ -11,6 +11,7 @@ WORKABLE_STAGE_NAMES = {'Applied':0,
                         'Screening Interview': 1,
                         'Initial Screen': 1,
                         'Kite Interview': 1,
+                        'Technical Interview': 1,
                         'Interview': 2,
                         'Stage 1 Interview': 2,
                         '1st Interview': 2,
@@ -20,14 +21,14 @@ WORKABLE_STAGE_NAMES = {'Applied':0,
                         'Manager Screen': 3,
                         'Stage 2 Interview': 3,
                         'Team Screen': 3,
-                        'Technical Interview': 3,
                         'Additional Interview': 4,
                         'Additional Interviews': 4,
                         'CEO Interview': 4,
                         'Offer': 5,
                         'References': 6,
                         'Reference Checks': 6,
-                        'Hired': 7}
+                        'Hired': 7,
+                        'Disqualified': 99}
 
 # Database Tables
 
@@ -42,3 +43,5 @@ COL_JOBS_ID = "JobID"
 TBL_MASTER_STAGES = "tbl_MASTER_stages"
 
 TBL_DATA_APPLICATIONS = "tbl_DATA_applications"
+
+TBL_DATA_USERS = "tbl_DATA_users"

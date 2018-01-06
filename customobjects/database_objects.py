@@ -53,6 +53,7 @@ class TableActivities(Base):
                     self.JobID,
                     self.StageID,
                     self.StageDesc,
+                    self.MemberID,
                     self.Body,
                     self.DisqualifiedFlag,
                     self.WorkableDateTime)
@@ -118,3 +119,35 @@ class TableJobs(Base):
                     self.JobDescription,
                     self.JobStatus,
                     self.LastUpdated)
+
+class TableUsers(Base):
+    '''
+    SQLAlchemy class for the tbl_DATA_users table
+    '''
+
+    __tablename__ = r.TBL_DATA_USERS
+
+    ID = Column(Integer, primary_key=True)
+    UserID = Column(String)
+    UserName = Column(String)
+    UserEmail = Column(String)
+    IsRecruiter = Column(Integer)
+
+
+class TableMetrics(Base):
+    '''
+    SQLAlchemy ORM class for the tbl_CONSOL_metrics table
+    '''
+
+    __tablename__ = "tbl_CONSOL_metrics"
+
+    ID = Column(Integer, primary_key=True)
+    TimeStamp = Column(DateTime)
+    CandidateID = Column(String)
+    JobID = Column(String)
+    ActivityID = Column(String)
+    StageID = Column(Integer, nullable=True)
+    StageDesc = Column(String, nullable=True)
+    ActivityTimeStamp = Column(DateTime)
+    DisqualifiedFlag = Column(Integer)
+    SourceID = Column(String)
