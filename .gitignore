@@ -102,4 +102,4 @@ ENV/
 
 # Local untracked files
 reference_private.py
-workingnotes/*
+working-notes/*
