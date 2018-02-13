@@ -95,7 +95,7 @@ def import_all_jobs():
     jobs_to_import = []
 
     # Populate database row objects for each job
-    cs.util_output("Importing {} new jobs to the database...".format(len(jobs)))
+    cs.util_output("Importing {} jobs to the database...".format(len(jobs)))
     for job in jobs:
 
         row = customobjects.database_objects.TableJobs(
@@ -114,8 +114,6 @@ def import_all_jobs():
     session.commit()
     session.close()
     cs.util_output("Jobs import process complete.")
-
-import_all_jobs()
 
 def import_activities_for_job(job_id):
     ''' Imports the new activities for a given job ID since the last time the process was run
