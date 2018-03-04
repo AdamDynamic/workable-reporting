@@ -63,7 +63,7 @@ def rate_limiter(max_calls_per_second):
 
     return decorate
 
-@rate_limiter(max_calls_per_second=2)
+@rate_limiter(max_calls_per_second=1)
 def get_rate_limited_request(url, headers):
     result = requests.get(url, headers=headers)
     return result
