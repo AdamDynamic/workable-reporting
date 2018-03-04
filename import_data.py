@@ -176,6 +176,7 @@ def get_first_activities_for_all_candidates():
     activities = session.query(TableActivities).all()
     session.close()
 
+    # Create a unique list of all candidate IDs
     all_candidate_ids = list(set([cand.CandidateID for cand in candidates]))
 
     min_candidate_activity = {}
@@ -188,8 +189,9 @@ def get_first_activities_for_all_candidates():
         # ToDo: Find a more efficient way to do this
         # Find the row with the earliest timestamp
         for candidate_row in candidate_activities:
+            # If the min_activity_row is populated then test, otherwise allocate the first row
             if min_activity_row:
-                if row.WorkableDateTime < min_activity_row.WorkableDateTime:
+                if candidate_row.WorkableDateTime < min_activity_row.WorkableDateTime:
                     min_activity_row = candidate_row
             else:
                 min_activity_row = candidate_row
@@ -225,7 +227,6 @@ def import_all_candidates():
     # Populate database row objects for each job
     cs.util_output("Importing {} new candidates to the database...".format(len(candidates)))
     for candidate in candidates:
-
         row = customobjects.database_objects.TableCandidate(
             CandidateID = candidate['id'],
             CandidateName = convert_string_to_unicode(string_to_convert=candidate['name']),
@@ -296,7 +297,6 @@ def create_consol_table():
     min_candidate_activities = get_first_activities_for_all_candidates()
 
     # ToDo: Need to include a check that the same stage isn't repeated for the same candidate?
-
     # For each candidate in the database, get all activities that relate to a change in state for that candidate
     for candidate in candidates:
 
